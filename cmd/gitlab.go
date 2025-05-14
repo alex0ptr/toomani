@@ -2,12 +2,12 @@ package cmd
 
 import (
 	"fmt"
+	"github.com/alex0ptr/toomani/business"
+	"github.com/alex0ptr/toomani/pkg"
 	"github.com/charmbracelet/log"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 	"slices"
-	"toomani/business"
-	"toomani/pkg"
 )
 
 func NewGitlabCmd() *cobra.Command {

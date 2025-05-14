@@ -3,11 +3,11 @@ package pkg
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/alex0ptr/toomani/business"
 	"github.com/charmbracelet/log"
 	"io"
 	"net/http"
 	url2 "net/url"
-	"toomani/business"
 )
 
 type GitLab struct {

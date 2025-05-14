@@ -1,9 +1,9 @@
 package main
 
 import (
+	"github.com/alex0ptr/toomani/cmd"
 	"github.com/charmbracelet/log"
 	"github.com/spf13/viper"
-	"toomani/cmd"
 )
 
 func main() {

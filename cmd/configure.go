@@ -2,7 +2,7 @@ package cmd
 
 import (
 	"sync"
-	"toomani/pkg"
+	"github.com/alex0ptr/toomani/pkg"
 )
 
 var shellWriter = sync.OnceValue(pkg.NewShellWriter)

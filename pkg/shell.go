@@ -2,10 +2,10 @@ package pkg
 
 import (
 	_ "embed"
+	"github.com/alex0ptr/toomani/business"
 	"github.com/charmbracelet/log"
 	"strings"
 	"text/template"
-	"toomani/business"
 )
 
 //go:embed shell.sh.tmpl

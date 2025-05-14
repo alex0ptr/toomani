@@ -2,9 +2,9 @@ package pkg
 
 import (
 	_ "embed"
+	"github.com/alex0ptr/toomani/business"
 	"github.com/stretchr/testify/assert"
 	"testing"
-	"toomani/business"
 )
 
 //go:embed shell-fixture-1.sh

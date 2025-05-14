@@ -1,4 +1,4 @@
-module toomani
+module github.com/alex0ptr/toomani
 
 go 1.24.1
 

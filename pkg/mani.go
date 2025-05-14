@@ -3,7 +3,7 @@ package pkg
 import (
 	"github.com/charmbracelet/log"
 	"gopkg.in/yaml.v3"
-	"toomani/business"
+	"github.com/alex0ptr/toomani/business"
 )
 
 type ManiWriter struct {
