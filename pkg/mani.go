@@ -2,8 +2,8 @@ package pkg
 
 import (
 	"github.com/charmbracelet/log"
-	"gitlab-to-mani/business"
 	"gopkg.in/yaml.v3"
+	"toomani/business"
 )
 
 type ManiWriter struct {

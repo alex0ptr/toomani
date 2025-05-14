@@ -4,10 +4,10 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/charmbracelet/log"
-	"gitlab-to-mani/business"
 	"io"
 	"net/http"
 	url2 "net/url"
+	"toomani/business"
 )
 
 type GitLab struct {

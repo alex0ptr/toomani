@@ -3,8 +3,8 @@ package pkg
 import (
 	_ "embed"
 	"github.com/stretchr/testify/assert"
-	"gitlab-to-mani/business"
 	"testing"
+	"toomani/business"
 )
 
 //go:embed shell-fixture-1.sh

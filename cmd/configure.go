@@ -1,8 +1,8 @@
 package cmd
 
 import (
-	"gitlab-to-mani/pkg"
 	"sync"
+	"toomani/pkg"
 )
 
 var shellWriter = sync.OnceValue(pkg.NewShellWriter)

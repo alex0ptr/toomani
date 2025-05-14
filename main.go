@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/charmbracelet/log"
 	"github.com/spf13/viper"
-	"gitlab-to-mani/cmd"
+	"toomani/cmd"
 )
 
 func main() {

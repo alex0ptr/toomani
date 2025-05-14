@@ -5,9 +5,9 @@ import (
 	"github.com/charmbracelet/log"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
-	"gitlab-to-mani/business"
-	"gitlab-to-mani/pkg"
 	"slices"
+	"toomani/business"
+	"toomani/pkg"
 )
 
 func NewGitlabCmd() *cobra.Command {

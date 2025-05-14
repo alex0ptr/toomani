@@ -3,9 +3,9 @@ package pkg
 import (
 	_ "embed"
 	"github.com/charmbracelet/log"
-	"gitlab-to-mani/business"
 	"strings"
 	"text/template"
+	"toomani/business"
 )
 
 //go:embed shell.sh.tmpl
