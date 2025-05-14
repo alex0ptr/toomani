@@ -7,10 +7,10 @@ import (
 
 func NewRootCmd() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "manifold",
+		Use:   "toomani",
 		Short: "A tool to bootstrap mani configuration files.",
-		Long: `manifold is a CLI tool to create configurations for mani.
-It crawls repositorries from GitLab or GitHub and creates a mani.yml file, so that you can use it with mani.
+		Long: `toomani is a CLI tool to create configurations for mani.
+It crawls repositories from GitLab or GitHub and creates a mani.yml file, so that you can use it with mani.
 `,
 		PersistentPreRun: func(cmd *cobra.Command, args []string) {
 			verbose, _ := cmd.Flags().GetBool("verbose")
