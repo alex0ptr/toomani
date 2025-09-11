@@ -48,6 +48,10 @@ It crawls repositories from a provided group and creates a mani.yml file, so tha
 			if vToken := viper.GetString("token"); token == "" && vToken != "" {
 				token = vToken
 			}
+			
+			if token == "" {
+				return fmt.Errorf("GitLab token is required: provide via --token flag or GITLAB_TOKEN environment variable")
+			}
 
 			url := fmt.Sprintf("https://%s/api/v4", host)
 			var writer business.ConfigurationWriter
