@@ -47,7 +47,7 @@ func (m ManiWriter) Write(repositories []business.Repository) string {
 		Projects: make(map[string]ManiProject),
 	}
 	for _, repo := range repositories {
-		maniConfig.Projects[repo.Name.String()] = ManiProject{
+		maniConfig.Projects[repo.FullPath.String()] = ManiProject{
 			Url:  repo.SshUrl,
 			Path: repo.SpacePath.String(),
 		}
