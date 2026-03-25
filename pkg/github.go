@@ -30,6 +30,7 @@ type GitHubRepoDto struct {
 	SSHURL   string   `json:"ssh_url"`
 	CloneURL string   `json:"clone_url"`
 	Owner    OwnerDto `json:"owner"`
+	Archived bool     `json:"archived"`
 }
 
 type OwnerDto struct {
@@ -82,7 +83,7 @@ func (g *GitHub) BySpace(space business.Path) ([]business.Repository, error) {
 }
 
 func (g *GitHub) fetchOrgRepositories(space business.Path) ([]business.Repository, error) {
-	baseURL := fmt.Sprintf("%s/orgs/%s/repos?per_page=100&archived=false", g.BaseURL, url.QueryEscape(space.String()))
+	baseURL := fmt.Sprintf("%s/orgs/%s/repos?per_page=100", g.BaseURL, url.QueryEscape(space.String()))
 	repos, err := g.fetchRepositories(baseURL, space)
 	if err != nil {
 		return nil, fmt.Errorf("failed to fetch organization repositories for '%s': %w", space.String(), err)
@@ -91,7 +92,7 @@ func (g *GitHub) fetchOrgRepositories(space business.Path) ([]business.Repositor
 }
 
 func (g *GitHub) fetchUserRepositories(space business.Path) ([]business.Repository, error) {
-	baseURL := fmt.Sprintf("%s/users/%s/repos?per_page=100&archived=false", g.BaseURL, url.QueryEscape(space.String()))
+	baseURL := fmt.Sprintf("%s/users/%s/repos?per_page=100", g.BaseURL, url.QueryEscape(space.String()))
 	repos, err := g.fetchRepositories(baseURL, space)
 	if err != nil {
 		return nil, fmt.Errorf("failed to fetch user repositories for '%s': %w", space.String(), err)
@@ -150,6 +151,9 @@ func (g *GitHub) fetchRepositories(baseURL string, space business.Path) ([]busin
 		}
 
 		for _, repo := range pageRepos {
+			if repo.Archived {
+				continue
+			}
 			repositories = append(repositories, repo.ToRepository(space))
 		}
 
