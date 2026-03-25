@@ -50,36 +50,23 @@ func (r GitHubRepoDto) ToRepository(space business.Path) business.Repository {
 }
 
 func (g *GitHub) BySpace(space business.Path) ([]business.Repository, error) {
-	var repositories []business.Repository
-	var orgErr, userErr error
-
 	orgRepos, orgErr := g.fetchOrgRepositories(space)
 	if orgErr == nil {
-		repositories = append(repositories, orgRepos...)
 		log.Debugf("Found %d repositories from organization %s", len(orgRepos), space.String())
-	} else {
-		log.Debugf("Failed to fetch org repositories for %s: %v", space.String(), orgErr)
+		return orgRepos, nil
 	}
+	log.Debugf("Failed to fetch org repositories for %s: %v, trying user endpoint...", space.String(), orgErr)
 
 	userRepos, userErr := g.fetchUserRepositories(space)
 	if userErr == nil {
-		repositories = append(repositories, userRepos...)
 		log.Debugf("Found %d repositories from user %s", len(userRepos), space.String())
-	} else {
-		log.Debugf("Failed to fetch user repositories for %s: %v", space.String(), userErr)
+		return userRepos, nil
 	}
 
-	if len(repositories) == 0 {
-		if orgErr != nil && userErr != nil {
-			return nil, fmt.Errorf("no repositories found for '%s': %w", space.String(), errors.Join(
-				fmt.Errorf("organization endpoint: %w", orgErr),
-				fmt.Errorf("user endpoint: %w", userErr),
-			))
-		}
-		return nil, fmt.Errorf("no repositories found for '%s' (tried both org and user endpoints but found 0 repos)", space.String())
-	}
-
-	return repositories, nil
+	return nil, fmt.Errorf("no repositories found for '%s': %w", space.String(), errors.Join(
+		fmt.Errorf("organization endpoint: %w", orgErr),
+		fmt.Errorf("user endpoint: %w", userErr),
+	))
 }
 
 func (g *GitHub) fetchOrgRepositories(space business.Path) ([]business.Repository, error) {
